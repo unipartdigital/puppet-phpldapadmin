@@ -1,0 +1,17 @@
+{
+  "name": "spantree-phpldapadmin",
+  "version": "0.1.0",
+  "author": "spantree",
+  "summary": "Install and configure phpldapadmin",
+  "license": "Apache 2.0",
+  "source": "https://github.com/spantree/puppet-phpldapadmin",
+  "project_page": "https://github.com/spantree/puppet-phpldapadmin",
+  "issues_url": "https://github.com/spantree/puppet-phpldapadmin/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_range": ">= 1.0.0"
+    }
+  ]
+}
+
