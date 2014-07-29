@@ -5,17 +5,22 @@ rvm:
   - 1.9.3
   - 2.1.2
 
-script: "rake spec"
+script:
+  - "bundle exec rake spec"
 
 branches:
   only:
     - master
 
 env:
-  - PUPPET_VERSION=3.4.0
-  - PUPPET_VERSION=3.6.2
+  - PUPPET_VERSION="~> 3.4.0"
+  - PUPPET_VERSION="~> 3.6.2"
 
 notifications:
-  email: false
+  email:
+    recipients:
+      - feniix@gmail.com
+    on_failure: always
+    on_success: change
 
 
