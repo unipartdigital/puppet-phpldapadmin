@@ -3,4 +3,4 @@ spec/fixtures
 pkg/
 .bundle/
 .ruby-*
-
+coverage
