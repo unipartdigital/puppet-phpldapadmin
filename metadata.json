@@ -1,6 +1,6 @@
 {
   "name": "spantree-phpldapadmin",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "author": "spantree",
   "summary": "Install and configure phpldapadmin",
   "license": "Apache 2.0",
@@ -12,6 +12,26 @@
       "name": "puppetlabs-stdlib",
       "version_range": ">= 1.0.0"
     }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingystem": "Debian",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "12.04",
+        "14.04"
+      ]
+    }
+  ],
+  "requirements": [
+    { "name": "pe", "version_requirement": "3.2.x" },
+    { "name": "puppet", "version_requirement": "3.4.x" }
   ]
 }
 

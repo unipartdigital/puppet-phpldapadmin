@@ -3,6 +3,7 @@ require 'puppet-lint/tasks/puppet-lint'
 require 'puppet-syntax/tasks/puppet-syntax'
 require 'coveralls/rake/task'
 require 'puppet_blacksmith/rake_tasks'
+require 'rake/clean'
 
 exclude_paths = [
   "spec/**/*.pp",
@@ -26,3 +27,5 @@ task :test => [
   :lint,
   :spec,
 ]
+
+CLEAN.include(exclude_paths, 'coverage')

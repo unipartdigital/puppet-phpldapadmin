@@ -1,6 +1,6 @@
 # phpldapadmin
 
-[![Build Status](https://travis-ci.org/Spantree/phpldapadmin.svg?branch=master)](https://travis-ci.org/Spantree/phpldapadmin) [![Coverage Status](https://img.shields.io/coveralls/Spantree/phpldapadmin.svg)](https://coveralls.io/r/Spantree/phpldapadmin?branch=master) 
+[![Build Status](https://travis-ci.org/Spantree/puppet-phpldapadmin.svg?branch=master)](https://travis-ci.org/Spantree/puppet-phpldapadmin) [![Coverage Status](https://img.shields.io/coveralls/Spantree/puppet-phpldapadmin.svg)](https://coveralls.io/r/Spantree/puppet-phpldapadmin?branch=master) 
 
 Sebastian Otaegui <feniix@gmail.com>
 

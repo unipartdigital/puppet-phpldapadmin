@@ -23,9 +23,7 @@
 #
 # === Examples
 #
-#  class { phpldapadmin:
-#    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
-#  }
+#  class { 'phpldapadmin': }
 #
 # === Authors
 #
