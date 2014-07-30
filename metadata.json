@@ -7,15 +7,9 @@
   "source": "https://github.com/spantree/puppet-phpldapadmin",
   "project_page": "https://github.com/spantree/puppet-phpldapadmin",
   "issues_url": "https://github.com/spantree/puppet-phpldapadmin/issues",
-  "dependencies": [
-    {
-      "name": "puppetlabs-stdlib",
-      "version_range": ">= 1.0.0"
-    }
-  ],
   "operatingsystem_support": [
     {
-      "operatingystem": "Debian",
+      "operatingsystem": "Debian",
       "operatingsystemrelease": [
         "6",
         "7"
@@ -27,6 +21,12 @@
         "12.04",
         "14.04"
       ]
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_range": ">= 1.0.0"
     }
   ],
   "requirements": [
