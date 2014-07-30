@@ -14,6 +14,8 @@ group :development, :test do
   gem 'rspec', '2.99.0',           :require => false
   gem 'puppetlabs_spec_helper',    :require => false
   gem 'coveralls',                 :require => false
+  gem 'puppet-blacksmith',         :require => false
+  gem 'guard-rake',                :require => false
 end
 
 # vim:ft=ruby
