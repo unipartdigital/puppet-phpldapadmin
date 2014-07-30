@@ -1,5 +1,9 @@
 # phpldapadmin
 
+[![Build Status](https://travis-ci.org/Spantree/phpldapadmin.svg?branch=master)](https://travis-ci.org/Spantree/phpldapadmin)
+
+Sebastian Otaegui <feniix@gmail.com>
+
 #### Table of Contents
 
 1. [Overview](#overview)
