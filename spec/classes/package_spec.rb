@@ -2,16 +2,22 @@ require 'spec_helper'
 
 describe 'phpldapadmin', :type => :module do
 
-  describe 'package' do
+  shared_examples 'a Linux OS' do
+    it { should compile.with_all_deps }
+    it { should contain_class('phpldapadmin::package') }
+  end
 
+  describe 'package' do
     context 'On a Debian OS' do
-      let :facts do
-        {
-          :operatingsystem => 'Debian',
-          :osfamily => 'Debian',
-        }
+      it_behaves_like 'a Linux OS' do
+        let :facts do
+          {
+            :operatingsystem => 'Debian',
+            :osfamily => 'Debian',
+          }
+        end
+        it { should contain_package('phpldapadmin') }
       end
-      it { should contain_package('phpldapadmin') }
     end
 
     context 'On other OS' do

@@ -34,11 +34,23 @@
 # Copyright 2014 Sebastian Otaegui
 #
 class phpldapadmin(
-  $path  = $phpldapadmin::params::path,
-  $owner = 'www-data',
+  $config_path  = $phpldapadmin::params::config_path,
+  $ldap_host = undef,
+  $ldap_suffix = undef,
+  $ldap_bind_id = undef,
 ) inherits phpldapadmin::params {
 
-  include phpldapadmin::package
-  include phpldapadmin::config
+  anchor { 'phpldapadmin::begin':
+    before => Class['phpldapadmin::package']
+  }
+  class { 'phpldapadmin::package':
+    require => Anchor['phpldapadmin::begin']
+  }
+  class {'phpldapadmin::config':
+    require => Class['phpldapadmin::package']
+  }
+  anchor {'phpldapadmin::end':
+    require => Class['phpldapadmin::config']
+  }
 
 }

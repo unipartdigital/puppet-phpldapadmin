@@ -33,4 +33,12 @@ class phpldapadmin::config {
   if $caller_module_name != $module_name {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
+
+  file { 'ldapadmin_config':
+    content => template("${module_name}/config.php.erb"),
+    path    => "${phpldapadmin::config_path}/config.php",
+    owner   => 'root',
+    group   => 'www-data',
+    mode    => '0640',
+  }
 }

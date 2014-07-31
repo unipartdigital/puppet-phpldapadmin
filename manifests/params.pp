@@ -23,9 +23,12 @@
 #
 class phpldapadmin::params {
 
+  $ldap_host = '127.0.0.1'
+
   case $::osfamily {
     'Debian': {
-      $path = '/var/www/phpldapadmin'
+      $config_path = '/etc/phpldapadmin'
+
     }
 
     default: {
