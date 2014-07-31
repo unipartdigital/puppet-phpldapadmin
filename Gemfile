@@ -1,6 +1,6 @@
 source ENV['GEM_SOURCE'] || 'https://rubygems.org'
 
-if puppetversion = ENV['PUPPET_GEM_VERSION']
+if puppetversion = ENV['PUPPET_VERSION']
     gem 'puppet', puppetversion, :require => false
 else
     gem 'puppet', :require => false
@@ -13,7 +13,6 @@ group :development, :test do
   gem 'rspec-puppet', :git => 'https://github.com/rodjek/rspec-puppet.git',   :require => false
   gem 'rspec', '2.99.0',           :require => false
   gem 'puppetlabs_spec_helper',    :require => false
-  gem 'coveralls',                 :require => false
   gem 'puppet-blacksmith',         :require => false
   gem 'guard-rake',                :require => false
 end
