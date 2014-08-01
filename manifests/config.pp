@@ -34,11 +34,22 @@ class phpldapadmin::config {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
 
-  file { 'ldapadmin_config':
+  case $::osfamily {
+    'Debian': {
+      $group = 'www-data'
+    }
+
+    default: {
+      fail('Unsupported OS family')
+    }
+  }
+
+  file { "${phpldapadmin::config_path}/config.php":
+    ensure  => file,
     content => template("${module_name}/config.php.erb"),
     path    => "${phpldapadmin::config_path}/config.php",
     owner   => 'root',
-    group   => 'www-data',
+    group   => $group,
     mode    => '0640',
   }
 }

@@ -38,7 +38,14 @@ class phpldapadmin(
   $ldap_host = undef,
   $ldap_suffix = undef,
   $ldap_bind_id = undef,
+  $ldap_bind_pass = undef,
 ) inherits phpldapadmin::params {
+
+  validate_absolute_path($config_path)
+  validate_string($ldap_host)
+  validate_string($ldap_suffix)
+  validate_string($ldap_bind_id)
+  validate_string($ldap_bind_pass)
 
   anchor { 'phpldapadmin::begin':
     before => Class['phpldapadmin::package']

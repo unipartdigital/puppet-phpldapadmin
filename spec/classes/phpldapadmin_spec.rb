@@ -8,6 +8,8 @@ describe 'phpldapadmin', :type => :module do
     it { should contain_class('phpldapadmin::params') }
     it { should contain_class('phpldapadmin::package') }
     it { should contain_class('phpldapadmin::config') }
+    it { should contain_anchor('phpldapadmin::begin').that_comes_before('Class[phpldapadmin::package]') }
+    it { should contain_anchor('phpldapadmin::end').that_requires('Class[phpldapadmin::config]') }
   end
 
   describe 'init' do

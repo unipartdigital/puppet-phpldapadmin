@@ -28,7 +28,6 @@ class phpldapadmin::params {
   case $::osfamily {
     'Debian': {
       $config_path = '/etc/phpldapadmin'
-
     }
 
     default: {
