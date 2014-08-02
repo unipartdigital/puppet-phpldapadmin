@@ -29,7 +29,13 @@
 #
 # Copyright 2014 Sebastian Otaegui
 #
-class phpldapadmin::config {
+class phpldapadmin::config(
+  $config_path = $phpldapadmin::config_path,
+  $ldap_suffix = undef,
+  $ldap_host = $phpldapadmin::ldap_host,
+  $ldap_bind_id = undef,
+  $ldap_bind_pass = undef,
+) {
   if $caller_module_name != $module_name {
     fail("Use of private class ${name} by ${caller_module_name}")
   }

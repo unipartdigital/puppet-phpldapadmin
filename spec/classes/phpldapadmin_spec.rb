@@ -12,28 +12,53 @@ describe 'phpldapadmin', :type => :module do
     it { should contain_anchor('phpldapadmin::end').that_requires('Class[phpldapadmin::config]') }
   end
 
-  describe 'init' do
-    context 'On a Debian OS' do
-      it_behaves_like 'a Linux OS' do
-        let :facts do
-          {
-            :operatingsystem => 'Debian',
-            :osfamily => 'Debian',
-          }
-        end
-      end
+  context 'On a Debian OS with valid params' do
+    let :params do
+      {
+        :ldap_suffix => 'dc=example,dc=com',
+        :ldap_host => 'localhost',
+        :ldap_bind_id => 'username',
+        :ldap_bind_pass => 'password',
+      }
     end
-    
-    context 'On other OS' do
+    it_behaves_like 'a Linux OS' do
       let :facts do
         {
-          :operatingsystem => 'xxx',
-          :osfamily => 'xxx',
+          :operatingsystem => 'Debian',
+          :osfamily => 'Debian',
         }
       end
-      it 'should fail if OS not supported' do
-        expect { should compile }.to raise_error(/Unsupported OS family/)
-      end
+    end
+  end
+
+  context 'On a Debian OS with invalid params' do
+    let :params do
+      {
+        :ldap_host => 'localhost',
+        :ldap_bind_id => 'username',
+        :ldap_bind_pass => 'password',
+      }
+    end
+    let :facts do
+      {
+        :operatingsystem => 'Debian',
+        :osfamily => 'Debian',
+      }
+    end
+    it 'should fail if params not valid' do
+      expect { should raise_error(/Invalid param/) }
+    end
+  end
+    
+  context 'On other OS' do
+    let :facts do
+      {
+        :operatingsystem => 'xxx',
+        :osfamily => 'xxx',
+      }
+    end
+    it 'should fail if OS not supported' do
+      expect { should compile }.to raise_error(/Unsupported OS family/)
     end
   end
 end

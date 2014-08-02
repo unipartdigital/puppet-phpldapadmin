@@ -8,7 +8,15 @@ describe 'phpldapadmin', :type => :module do
   end
 
   describe 'config' do
-    context 'On Debian' do
+    context 'On Debian with valid params' do
+      let :params do
+        {
+          :ldap_suffix => 'dc=spantree,dc=com',
+          :ldap_host => 'localhost',
+          :ldap_bind_id => 'cn=admin,dc=spantree,dc=com',
+          :ldap_bind_pass => 'the_password',
+        }
+      end
       it_behaves_like 'a Linux OS' do
         let :facts do
           {
@@ -21,8 +29,40 @@ describe 'phpldapadmin', :type => :module do
         it { should contain_file('/etc/phpldapadmin/config.php').with_mode('0640') }
         it { should contain_file('/etc/phpldapadmin/config.php').with_owner('root') }
         it { should contain_file('/etc/phpldapadmin/config.php').with_group('www-data') }
+        it { should contain_file('/etc/phpldapadmin/config.php')
+          .with_content(/\$servers->setValue\('server','host', 'localhost'\);/)
+        }
+        it { should contain_file('/etc/phpldapadmin/config.php')
+          .with_content(/\$servers->setValue\('server','base',array\('dc=spantree,dc=com'\)\)/)
+        }
+        it { should contain_file('/etc/phpldapadmin/config.php')
+          .with_content(/\$servers->setValue\('login','bind_id','cn=admin,dc=spantree,dc=com'\);/)
+        }
+        it { should contain_file('/etc/phpldapadmin/config.php')
+          .with_content(/\$servers->setValue\('login','bind_pass','the_password'\);/)
+        }
       end
     end
+
+    context 'On Debian with invalid params' do
+      let :params do
+        {
+          :ldap_host => 'localhost',
+          :ldap_bind_id => 'username',
+          :ldap_bind_pass => 'password',
+        }
+      end
+      let :facts do
+        {
+          :operatingsystem => 'Debian',
+          :osfamily => 'Debian',
+        }
+      end
+      it 'should fail if params not valid' do
+        expect { should raise_error(/Invalid param/) }
+      end
+    end
+
     context 'On other OS' do
       let :facts do
         {

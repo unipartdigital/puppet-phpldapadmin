@@ -35,17 +35,32 @@
 #
 class phpldapadmin(
   $config_path  = $phpldapadmin::params::config_path,
-  $ldap_host = undef,
+  $ldap_host = $phpldapadmin::params::ldap_host,
   $ldap_suffix = undef,
   $ldap_bind_id = undef,
   $ldap_bind_pass = undef,
 ) inherits phpldapadmin::params {
 
-  validate_absolute_path($config_path)
+  notify { "Using ldap_host: ${ldap_host}": withpath => true }
   validate_string($ldap_host)
+  if ( !is_string($ldap_host) and !is_ip_address($ldap_host) ) {
+    fail('Invalid param ldap_host, must be ip or hostname')
+  }
+
+  notify { "Using ldap_suffix ${ldap_suffix}": withpath => true }
   validate_string($ldap_suffix)
+  if ( !is_string($ldap_suffix) ) {
+    fail('Invalid param ldap_suffix, must be ip or hostname')
+  }
+
+  notify { "Using ldap_bind_id ${ldap_bind_id}": withpath => true }
   validate_string($ldap_bind_id)
+
+  notify { "Using ldap_bind_pass ${ldap_bind_pass}": withpath => true }
   validate_string($ldap_bind_pass)
+
+  notify { "Using config_path ${config_path}": withpath => true }
+  validate_absolute_path($config_path)
 
   anchor { 'phpldapadmin::begin':
     before => Class['phpldapadmin::package']
@@ -54,7 +69,12 @@ class phpldapadmin(
     require => Anchor['phpldapadmin::begin']
   }
   class {'phpldapadmin::config':
-    require => Class['phpldapadmin::package']
+    config_path    => $config_path,
+    ldap_host      => $ldap_host,
+    ldap_suffix    => $ldap_suffix,
+    ldap_bind_id   => $ldap_bind_id,
+    ldap_bind_pass => $ldap_bind_pass,
+    require        => Class['phpldapadmin::package']
   }
   anchor {'phpldapadmin::end':
     require => Class['phpldapadmin::config']
