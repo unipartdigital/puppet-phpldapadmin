@@ -23,7 +23,7 @@ The phpldapadmin module installs and configures phpldapadmin.
 
 ## Module Description
 
-This module installs phpldapadmin, it does not manage or touch the web server configuration.
+This module installs phpldapadmin, and sets up the file '/etc/phpldapadmin/config.php' with provided user/password and hostname.
 
 ## Setup
 
@@ -49,11 +49,47 @@ class { 'phpldapadmin':
 
 ## Reference
 
-All internal classes are private the only public class is phpldapadmin
+#### Public classes
+
+* [**phpldapadmin**](#class-phpldapadmin)
+
+#### Private classes
+
+* **phpldapadmin::config**: writes the file `/etc/phpldapadmin/config.php` with proper values.
+
+* **phpldapadmin::package**: installs the package using the package manager.
+
+###Class: phpldapadmin
+
+This class is provided to do the basic setup tasks required for using phpldapadmin.
+
+At the moment if does not take care of setting up a web server to serve the web pages.
+
+####`ldap_host`
+
+Parameter that controls the ldap the phpldapadmin needs to connect.
+
+`ldap_host` can either be an ipv4 address or a hostname.
+
+####`ldap_suffix`
+
+Parameter that controls the top level suffix for the ldap.
+
+`ldap_suffix` must be a string with the appropriate suffix.
+
+####`ldap_bind_id`
+
+Parameter that controls the id used to bind and manage the ldap.
+
+`ldap_bind_id` must be a user that has administrative access to the ldap server.
+
+####`ldap_bind_pass`
+
+Parameter that controls the password of the user specified in the `ldap_bind_id` parameter.
 
 ## Limitations
 
-This module has only been tested on Ubuntu 14.04, it should work on Debian and Ubuntu 12.04 too.
+This module has only been tested on Ubuntu 14.04, but it should work on Debian and Ubuntu 12.04 too.
 
 At the moment it does not configure the phpldapadmin app with SASL.
 
