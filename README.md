@@ -1,6 +1,6 @@
 # phpldapadmin
 
-[![Build Status](https://travis-ci.org/Spantree/puppet-phpldapadmin.svg?branch=master)](https://travis-ci.org/Spantree/puppet-phpldapadmin) 
+[![Build Status](https://travis-ci.org/Spantree/puppet-phpldapadmin.svg?branch=master)](https://travis-ci.org/Spantree/puppet-phpldapadmin)
 
 Sebastian Otaegui <feniix@gmail.com>
 
@@ -19,62 +19,48 @@ Sebastian Otaegui <feniix@gmail.com>
 
 ## Overview
 
-The phpldapadmin module installs and configures phpldapadmin. At the moment it only supports debian based operating systems.
+The phpldapadmin module installs and configures phpldapadmin.
 
 ## Module Description
 
-If applicable, this section should have a brief description of the technology
-the module integrates with and what that integration enables. This section
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?"
-
-If your module has a range of functionality (installation, configuration,
-management, etc.) this is the time to mention it.
+This module installs phpldapadmin, it does not manage or touch the web server configuration.
 
 ## Setup
 
 ### What phpldapadmin affects
 
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute on the system it's installed on.
-
-
-### Setup Requirements **OPTIONAL**
-
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
+* Install the `phpldapadmin` package.
+* Modify the file `/etc/phpldapadmin/config.php` with custom values.
 
 ### Beginning with phpldapadmin
 
-The very basic steps needed for a user to get the module up and running.
-
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you may wish to include an additional section here: Upgrading
-(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
+`puppet module install spantree-phpldapadmin` and follow the instructions specified on the Usage section.
 
 ## Usage
 
-Put the classes, types, and resources for customizing, configuring, and doing
-the fancy stuff with your module here.
+```puppet
+class { 'phpldapadmin':
+  ldap_host      => 'localhost',
+  ldap_suffix    => 'dc=domain,dc=tld',
+  ldap_bind_id   => 'cn=admin,dc=domain,dc=tld',
+  ldap_bind_pass => 'password',
+}
+```
 
 ## Reference
 
-Here, list the classes, types, providers, facts, etc contained in your module.
-This section should include all of the under-the-hood workings of your module so
-people know what the module is touching on their system but don't need to mess
-with things. (We are working on automating this section!)
+All internal classes are private the only public class is phpldapadmin
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc.
+This module has only been tested on Ubuntu 14.04, it should work on Debian and Ubuntu 12.04 too.
+
+At the moment it does not configure the phpldapadmin app with SASL.
 
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
+Use your favorite text editor (mine is vim) and run `bundle exec rake test` to test, don't forget to `bundle install` first.
 
-## Release Notes/Contributors/Etc **Optional**
+## Release Notes/Contributors/Etc
 
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You may also add any additional sections you feel are
-necessary or important to include here. Please use the `## ` header.
+To do
