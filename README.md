@@ -85,7 +85,9 @@ Parameter that controls the id used to bind and manage the ldap.
 
 ####`ldap_bind_pass`
 
-Parameter that controls the password of the user specified in the `ldap_bind_id` parameter.
+Optional sparameter that controls the password of the user specified in the `ldap_bind_id` parameter.
+
+If not specified, you wil be prompted for the password.
 
 ## Limitations
 
