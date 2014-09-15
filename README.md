@@ -89,7 +89,7 @@ Parameter that controls the password of the user specified in the `ldap_bind_id`
 
 ## Limitations
 
-This module has only been tested on Ubuntu 14.04, but it should work on Debian and Ubuntu 12.04 too.
+This module has been tested on Ubuntu 14.04 and CentOS 6.5. It should also work on Debian/Ubuntu 12.04 and RedHat/CentOS 7.
 
 At the moment it does not configure the phpldapadmin app with SASL.
 

@@ -28,6 +28,14 @@ class phpldapadmin::params {
   case $::osfamily {
     'Debian': {
       $config_path = '/etc/phpldapadmin'
+      $config_group = 'www-data'
+      $package_name = 'phpldapadmin'
+    }
+
+    'RedHat': {
+      $config_path = '/etc/phpldapadmin'
+      $config_group = 'apache'
+      $package_name = 'phpldapadmin'
     }
 
     default: {
