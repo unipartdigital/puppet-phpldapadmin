@@ -1,20 +1,17 @@
 source ENV['GEM_SOURCE'] || 'https://rubygems.org'
 
-if puppetversion = ENV['PUPPET_VERSION']
-    gem 'puppet', puppetversion, :require => false
-else
-    gem 'puppet', '~> 3.4.0', :require => false
-end
+puppetversion = ENV.key?('PUPPET_VERSION') ? "#{ENV['PUPPET_VERSION']}" : ['>= 3.3']
 
 group :development, :test do
-  gem 'rake',                      :require => false
-  gem 'puppet-lint',               :require => false
-  gem 'puppet-syntax',             :require => false
-  gem 'rspec-puppet', :git => 'https://github.com/spantree/rspec-puppet.git',   :require => false
-  gem 'rspec', '<3.0.0',           :require => false
-  gem 'puppetlabs_spec_helper',    :require => false
-  gem 'puppet-blacksmith',         :require => false
-  gem 'guard-rake',                :require => false
+  gem 'rake'
+  gem 'puppet'
+  gem 'puppet-lint'
+  gem 'puppet-syntax'
+  gem 'rspec-puppet', :git => 'https://github.com/spantree/rspec-puppet.git'
+  #gem 'rspec', '<3.0.0'
+  gem 'puppetlabs_spec_helper'
+  gem 'puppet-blacksmith'
+  gem 'guard-rake'
 end
 
 # vim:ft=ruby
