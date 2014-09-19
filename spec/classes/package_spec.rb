@@ -20,6 +20,18 @@ describe 'phpldapadmin', :type => :module do
       end
     end
 
+    context 'On a CentOS OS' do
+      it_behaves_like 'a Linux OS' do
+        let :facts do
+          {
+            :operatingsystem => 'CentOS',
+            :osfamily => 'RedHat',
+          }
+        end
+        it { should contain_package('phpldapadmin') }
+      end
+    end
+
     context 'On other OS' do
       let :facts do
         {
