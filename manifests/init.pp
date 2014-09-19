@@ -41,27 +41,27 @@ class phpldapadmin(
   $ldap_bind_pass = undef,
 ) inherits phpldapadmin::params {
 
-  notify { "Using ldap_host: ${ldap_host}": withpath => true }
+  debug("Using ldap_host: ${ldap_host}")
   validate_string($ldap_host)
   if ( !is_string($ldap_host) and !is_ip_address($ldap_host) ) {
     fail('Invalid param ldap_host, must be ip or hostname')
   }
 
-  notify { "Using ldap_suffix ${ldap_suffix}": withpath => true }
+  debug("Using ldap_suffix ${ldap_suffix}")
   validate_string($ldap_suffix)
   if ( !is_string($ldap_suffix) ) {
     fail('Invalid param ldap_suffix, must be ip or hostname')
   }
 
-  notify { "Using ldap_bind_id ${ldap_bind_id}": withpath => true }
+  debug("Using ldap_bind_id ${ldap_bind_id}")
   validate_string($ldap_bind_id)
 
   if $ldap_bind_pass != undef {
-    notify { "Using ldap_bind_pass ${ldap_bind_pass}": withpath => true }
+    debug("Using ldap_bind_pass ${ldap_bind_pass}")
     validate_string($ldap_bind_pass)
   }
 
-  notify { "Using config_path ${config_path}": withpath => true }
+  debug("Using config_path ${config_path}")
   validate_absolute_path($config_path)
 
   anchor { 'phpldapadmin::begin':
