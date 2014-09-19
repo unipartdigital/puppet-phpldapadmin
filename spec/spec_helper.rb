@@ -10,9 +10,5 @@ RSpec.configure do |c|
   c.mock_with :rspec
   c.treat_symbols_as_metadata_keys_with_true_values = true
 
-  c.before(:each) do
-   Puppet::Util::Log.level = :warning
-   Puppet::Util::Log.newdestination(:console)
-  end
 end
 
