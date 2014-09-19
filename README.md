@@ -85,11 +85,13 @@ Parameter that controls the id used to bind and manage the ldap.
 
 ####`ldap_bind_pass`
 
-Parameter that controls the password of the user specified in the `ldap_bind_id` parameter.
+Optional parameter that controls the password of the user specified in the `ldap_bind_id` parameter.
+
+If not specified, you wil be prompted for the password.
 
 ## Limitations
 
-This module has only been tested on Ubuntu 14.04, but it should work on Debian and Ubuntu 12.04 too.
+This module has been tested on Ubuntu 14.04 and CentOS 6.5. It should also work on Debian/Ubuntu 12.04 and RedHat/CentOS 7.
 
 At the moment it does not configure the phpldapadmin app with SASL.
 

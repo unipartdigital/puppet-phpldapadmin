@@ -56,8 +56,10 @@ class phpldapadmin(
   notify { "Using ldap_bind_id ${ldap_bind_id}": withpath => true }
   validate_string($ldap_bind_id)
 
-  notify { "Using ldap_bind_pass ${ldap_bind_pass}": withpath => true }
-  validate_string($ldap_bind_pass)
+  if $ldap_bind_pass != undef {
+    notify { "Using ldap_bind_pass ${ldap_bind_pass}": withpath => true }
+    validate_string($ldap_bind_pass)
+  }
 
   notify { "Using config_path ${config_path}": withpath => true }
   validate_absolute_path($config_path)

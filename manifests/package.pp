@@ -14,15 +14,7 @@ class phpldapadmin::package {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
 
-  case $::osfamily {
-    'Debian': {
-      package { 'phpldapadmin':
-        ensure => latest,
-      }
-    }
-
-    default: {
-      fail("Unsupported OS family ${::osfamily}")
-    }
+  package { $phpldapadmin::params::package_name:
+    ensure => latest,
   }
 }

@@ -63,6 +63,42 @@ describe 'phpldapadmin', :type => :module do
       end
     end
 
+    context 'On CentOS with valid params' do
+      let :params do
+        {
+          :ldap_suffix => 'dc=spantree,dc=com',
+          :ldap_host => 'localhost',
+          :ldap_bind_id => 'cn=admin,dc=spantree,dc=com',
+          :ldap_bind_pass => 'the_password',
+        }
+      end
+      it_behaves_like 'a Linux OS' do
+        let :facts do
+          {
+            :operatingsystem => 'CentOS',
+            :osfamily => 'RedHat',
+          }
+        end
+        it { should contain_file('/etc/phpldapadmin/config.php') }
+        it { should contain_file('/etc/phpldapadmin/config.php').with_ensure('file') }
+        it { should contain_file('/etc/phpldapadmin/config.php').with_mode('0640') }
+        it { should contain_file('/etc/phpldapadmin/config.php').with_owner('root') }
+        it { should contain_file('/etc/phpldapadmin/config.php').with_group('apache') }
+        it { should contain_file('/etc/phpldapadmin/config.php')
+          .with_content(/\$servers->setValue\('server','host', 'localhost'\);/)
+        }
+        it { should contain_file('/etc/phpldapadmin/config.php')
+          .with_content(/\$servers->setValue\('server','base',array\('dc=spantree,dc=com'\)\)/)
+        }
+        it { should contain_file('/etc/phpldapadmin/config.php')
+          .with_content(/\$servers->setValue\('login','bind_id','cn=admin,dc=spantree,dc=com'\);/)
+        }
+        it { should contain_file('/etc/phpldapadmin/config.php')
+          .with_content(/\$servers->setValue\('login','bind_pass','the_password'\);/)
+        }
+      end
+    end
+
     context 'On other OS' do
       let :facts do
         {
