@@ -18,8 +18,8 @@ GEM
     aws-sdk (1.42.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
-    backports (3.6.0)
-    beaker (1.18.0)
+    backports (3.6.1)
+    beaker (1.19.1)
       aws-sdk (= 1.42.0)
       blimpy (~> 0.6)
       docker-api
@@ -35,7 +35,7 @@ GEM
       nokogiri (~> 1.5.10)
       rbvmomi (= 1.8.1)
       unf (~> 0.1)
-    beaker-rspec (2.2.6)
+    beaker-rspec (3.0.0)
       beaker (~> 1.10)
       rspec
       serverspec (~> 1.0)
@@ -154,7 +154,7 @@ GEM
       facter (> 1.6, < 3)
       hiera (~> 1.0)
       json_pure
-    puppet-blacksmith (3.0.1)
+    puppet-blacksmith (3.0.2)
       puppet (>= 2.7.16)
       rest-client
     puppet-lint (1.0.1)
