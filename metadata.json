@@ -8,6 +8,7 @@
   "project_page": "https://github.com/spantree/puppet-phpldapadmin",
   "issues_url": "https://github.com/spantree/puppet-phpldapadmin/issues",
   "description": "Small puppet module to manage the installation and config of phpldapadmin",
+  "tags": ["php", "ldap", "phpldapadmin"],
   "operatingsystem_support": [
     {
       "operatingsystem": "Debian",
