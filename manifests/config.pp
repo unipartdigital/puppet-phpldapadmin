@@ -35,7 +35,7 @@ class phpldapadmin::config(
   $ldap_host = $phpldapadmin::ldap_host,
   $ldap_bind_id = undef,
   $ldap_bind_pass = undef,
-  $extra_conf = $phpldapadmin::extraconf,
+  $extraconf = $phpldapadmin::extraconf,
 ) {
   if $caller_module_name != $module_name {
     fail("Use of private class ${name} by ${caller_module_name}")
