@@ -39,6 +39,7 @@ class phpldapadmin(
   $ldap_suffix = undef,
   $ldap_bind_id = undef,
   $ldap_bind_pass = undef,
+  $extraconf = undef,
 ) inherits phpldapadmin::params {
 
   debug("Using ldap_host: ${ldap_host}")
@@ -76,6 +77,7 @@ class phpldapadmin(
     ldap_suffix    => $ldap_suffix,
     ldap_bind_id   => $ldap_bind_id,
     ldap_bind_pass => $ldap_bind_pass,
+    extraconf      => $extraconf,
     require        => Class['phpldapadmin::package']
   }
   anchor {'phpldapadmin::end':
