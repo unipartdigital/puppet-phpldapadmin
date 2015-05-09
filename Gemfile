@@ -6,7 +6,7 @@ group :test do
   gem "rake"
   gem 'puppet', puppetversion
   gem 'puppetlabs_spec_helper', '>= 0.1.0'
-  gem 'rspec-puppet', :git => 'https://github.com/spantree/rspec-puppet.git'
+  gem 'rspec-puppet'
   gem 'puppet-lint', '>= 1.0.0'
   gem 'facter', '>= 1.7.0'
 end
