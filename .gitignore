@@ -1,7 +1,6 @@
 spec/fixtures
 *.swp
 pkg/
-.bundle/
 .ruby-*
 coverage
 vendor/
