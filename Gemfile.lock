@@ -366,7 +366,7 @@ DEPENDENCIES
   beaker-rspec
   facter (>= 1.7.0)
   guard-rake
-  puppet (>= 4.0.0)
+  puppet (>= 3.3)
   puppet-blacksmith
   puppet-lint (>= 1.0.0)
   puppet-lint-absolute_classname-check
