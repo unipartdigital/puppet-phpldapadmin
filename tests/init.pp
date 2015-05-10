@@ -9,7 +9,7 @@
 # Learn more about module testing here:
 # http://docs.puppetlabs.com/guides/tests_smoke.html
 #
-class { 'phpldapadmin':
+class { '::phpldapadmin':
   ldap_host      => 'localhost',
   ldap_suffix    => 'dc=domain,dc=tld',
   ldap_bind_id   => 'cn=admin,dc=domain,dc=tld',

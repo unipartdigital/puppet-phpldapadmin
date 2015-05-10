@@ -65,21 +65,21 @@ class phpldapadmin(
   validate_absolute_path($config_path)
 
   anchor { 'phpldapadmin::begin':
-    before => Class['phpldapadmin::package']
+    before => Class['::phpldapadmin::package'],
   }
-  class { 'phpldapadmin::package':
-    require => Anchor['phpldapadmin::begin']
+  class { '::phpldapadmin::package':
+    require => Anchor['phpldapadmin::begin'],
   }
-  class {'phpldapadmin::config':
+  class {'::phpldapadmin::config':
     config_path    => $config_path,
     ldap_host      => $ldap_host,
     ldap_suffix    => $ldap_suffix,
     ldap_bind_id   => $ldap_bind_id,
     ldap_bind_pass => $ldap_bind_pass,
-    require        => Class['phpldapadmin::package']
+    require        => Class['::phpldapadmin::package'],
   }
   anchor {'phpldapadmin::end':
-    require => Class['phpldapadmin::config']
+    require => Class['::phpldapadmin::config'],
   }
 
 }

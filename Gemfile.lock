@@ -253,6 +253,24 @@ GEM
       puppet (>= 2.7.16)
       rest-client
     puppet-lint (1.1.0)
+    puppet-lint-absolute_classname-check (0.1.3)
+      puppet-lint (~> 1.0)
+    puppet-lint-classes_and_types_beginning_with_digits-check (0.1.0)
+      puppet-lint (~> 1.0)
+    puppet-lint-empty_string-check (0.2.1)
+      puppet-lint (~> 1.0)
+    puppet-lint-file_ensure-check (0.2.1)
+      puppet-lint (~> 1.0)
+    puppet-lint-leading_zero-check (0.1.0)
+      puppet-lint (~> 1.0)
+    puppet-lint-trailing_comma-check (0.3.1)
+      puppet-lint (~> 1.0)
+    puppet-lint-undef_in_function-check (0.1.0)
+      puppet-lint (~> 1.0)
+    puppet-lint-unquoted_string-check (0.2.5)
+      puppet-lint (~> 1.0)
+    puppet-lint-version_comparison-check (0.1.2)
+      puppet-lint (~> 1.0)
     puppet-syntax (2.0.0)
       rake
     puppetlabs_spec_helper (0.10.2)
@@ -351,6 +369,15 @@ DEPENDENCIES
   puppet (>= 4.0.0)
   puppet-blacksmith
   puppet-lint (>= 1.0.0)
+  puppet-lint-absolute_classname-check
+  puppet-lint-classes_and_types_beginning_with_digits-check
+  puppet-lint-empty_string-check
+  puppet-lint-file_ensure-check
+  puppet-lint-leading_zero-check
+  puppet-lint-trailing_comma-check
+  puppet-lint-undef_in_function-check
+  puppet-lint-unquoted_string-check
+  puppet-lint-version_comparison-check
   puppetlabs_spec_helper (>= 0.1.0)
   rake
   rspec-puppet
