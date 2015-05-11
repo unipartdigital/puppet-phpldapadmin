@@ -44,7 +44,7 @@ class { 'phpldapadmin':
   ldap_suffix    => 'dc=domain,dc=tld',
   ldap_bind_id   => 'cn=admin,dc=domain,dc=tld',
   ldap_bind_pass => 'password',
-  extraconf      => '
+  extraconf      => "
       $servers->newServer('ldap_pla');
       $servers->SetValue('server','name','LDAP My Domain (slave)');
       $servers->SetValue('server','host','ldap2.mydomain.org');
@@ -56,7 +56,7 @@ class { 'phpldapadmin':
       $servers->SetValue('appearance','password_hash','crypt');
       $servers->SetValue('server','read_only',false);
       $servers->SetValue('appearance','show_create',true);
-      $servers->SetValue('auto_number','enable',false);'
+      $servers->SetValue('auto_number','enable',false);"
 }
 ```
 
