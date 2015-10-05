@@ -77,6 +77,8 @@ phpldapadmin::extraconf : |
   $servers->SetValue('auto_number','enable',false);
 ```
 
+To use the module with CentOS you need to add the `EPEL` repository, one way to do that is to use the module `stahnma/epel`.
+
 ## Reference
 
 #### Public classes

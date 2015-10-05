@@ -1,6 +1,6 @@
 {
   "name": "spantree-phpldapadmin",
-  "version": "0.0.12",
+  "version": "0.0.14",
   "author": "spantree",
   "summary": "Install and configure phpldapadmin",
   "license": "Apache-2.0",
@@ -46,7 +46,7 @@
   "dependencies": [
     {
       "name": "puppetlabs-stdlib",
-      "version_requirement": ">=3.3.0 <=4.4.0"
+      "version_requirement": ">=3.3.0 <5.0.0"
     }
   ]
 }
