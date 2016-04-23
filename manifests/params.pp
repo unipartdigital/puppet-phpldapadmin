@@ -38,6 +38,12 @@ class phpldapadmin::params {
       $package_name = 'phpldapadmin'
     }
 
+    'FreeBSD': {
+      $config_path = '/usr/local/www/phpldapadmin'
+      $config_group = 'www'
+      $package_name = 'phpldapadmin'
+    }
+
     default: {
       fail("Unsupported OS family ${::osfamily}")
     }
