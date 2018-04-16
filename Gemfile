@@ -1,12 +1,12 @@
 source "https://rubygems.org"
 
-puppetversion = ENV.key?("PUPPET_VERSION") ? "#{ENV["PUPPET_VERSION"]}" : ["~> 3"]
+puppetversion = ENV.key?("PUPPET_VERSION") ? "#{ENV["PUPPET_VERSION"]}" : ["~> 4.10.0"]
 
 group :test do
   gem "rake", "~> 10.0"
   gem "puppet", puppetversion
   gem "puppetlabs_spec_helper", ">= 0.1.0"
-  gem "rspec-puppet"
+  gem "rspec-puppet", "~> 2.3.0"
   gem "puppet-lint", ">= 1.0.0"
   gem "puppet-lint-absolute_classname-check"
   gem "puppet-lint-classes_and_types_beginning_with_digits-check"
@@ -18,6 +18,7 @@ group :test do
   gem "puppet-lint-unquoted_string-check"
   gem "puppet-lint-version_comparison-check"
   gem "facter", ">= 1.7.0"
+  gem "metadata-json-lint"
 end
 
 group :development do

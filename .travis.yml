@@ -1,21 +1,24 @@
 ---
 language: ruby
 cache: bundler
-before_install: rm Gemfile.lock || true
-install: bundle install --without development
+before_install:
+  - rm Gemfile.lock || true
+  - gem install -V bundler
+install:
+  - travis_retry bundle install --without development
+  - bundle list
 rvm:
-  - 2.0.0
-  - 2.1.0
-  - 2.2.0
-  - 2.3.0
-env: 
-  - PUPPET_VERSION="~> 3.7"
-  - PUPPET_VERSION="~> 3.8"
-  - PUPPET_VERSION="~> 4.0"
-  - PUPPET_VERSION="~> 4.1"
-  - PUPPET_VERSION="~> 4.2"
-  - PUPPET_VERSION="~> 4.3"
-  - PUPPET_VERSION="~> 4.4"
+  - 2.4.4
+env:
+  - PUPPET_VERSION="~> 4.8.0"
+  - PUPPET_VERSION="~> 4.9.0"
+  - PUPPET_VERSION="~> 4.10.0"
+  - PUPPET_VERSION="~> 5.0.0"
+  - PUPPET_VERSION="~> 5.1.0"
+  - PUPPET_VERSION="~> 5.2.0"
+  - PUPPET_VERSION="~> 5.3.0"
+  - PUPPET_VERSION="~> 5.4.0"
+  - PUPPET_VERSION="~> 5.5.0"
 script:  bundle exec rake test
 branches:
   only:
@@ -26,14 +29,3 @@ notifications:
       - feniix@gmail.com
     on_failure: change
     on_success: change
-
-matrix:
-  exclude:
-    - rvm: 2.2.0
-      env: PUPPET_VERSION="~> 3.8"
-    - rvm: 2.2.0
-      env: PUPPET_VERSION="~> 3.7"
-    - rvm: 2.3.0
-      env: PUPPET_VERSION="~> 3.8"
-    - rvm: 2.3.0
-      env: PUPPET_VERSION="~> 3.7"
