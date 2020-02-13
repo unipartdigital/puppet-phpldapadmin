@@ -37,8 +37,10 @@ class phpldapadmin::config(
   $ldap_bind_id   = undef,
   $ldap_bind_pass = undef,
   $extraconf      = $phpldapadmin::extraconf,
+  $session_id     = undef,
 ) {
-  $session_id     = autosecret::sha1('phpldapadmin', 'user') # Custom function for secret generation
+  
+  #$session_id     = autosecret::sha1('phpldapadmin', 'user') # Custom function for secret generation
 
   if $caller_module_name != $module_name {
     fail("Use of private class ${name} by ${caller_module_name}")
