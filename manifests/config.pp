@@ -24,19 +24,22 @@
 # === Authors
 #
 # Sebastian Otaegui
+# Seth Tunstall
 #
 # === Copyright
 #
-# Copyright 2014 Sebastian Otaegui
-#
+# Copyright 2019 Sebastian Otaegui, Seth Tunstall
+# 
 class phpldapadmin::config(
-  $config_path = $phpldapadmin::config_path,
-  $ldap_suffix = undef,
-  $ldap_host = $phpldapadmin::ldap_host,
-  $ldap_bind_id = undef,
+  $config_path    = $phpldapadmin::config_path,
+  $ldap_suffix    = undef,
+  $ldap_host      = $phpldapadmin::ldap_host,
+  $ldap_bind_id   = undef,
   $ldap_bind_pass = undef,
-  $extraconf = $phpldapadmin::extraconf,
+  $extraconf      = $phpldapadmin::extraconf,
 ) {
+  $session_id     = autosecret::sha1('phpldapadmin', 'user') # Custom function for secret generation
+
   if $caller_module_name != $module_name {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
