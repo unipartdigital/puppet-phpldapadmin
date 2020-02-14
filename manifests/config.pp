@@ -54,4 +54,5 @@ class phpldapadmin::config(
     group   => $phpldapadmin::params::config_group,
     mode    => '0640',
   }
+  selinux::boolean { 'httpd_can_connect_ldap': }
 }
