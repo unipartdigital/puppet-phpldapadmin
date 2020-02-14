@@ -41,6 +41,7 @@ class phpldapadmin::config(
 ) {
   
   #$session_id     = autosecret::sha1('phpldapadmin', 'user') # Custom function for secret generation
+  $logo_file      = '/usr/share/phpldapadmin/htdocs/images/default/logo-small.png'
 
   if $caller_module_name != $module_name {
     fail("Use of private class ${name} by ${caller_module_name}")
@@ -53,6 +54,11 @@ class phpldapadmin::config(
     owner   => 'root',
     group   => $phpldapadmin::params::config_group,
     mode    => '0640',
+  }
+  # Drop a cheeky logo in place :)
+  file { $logo_file:
+    ensure => file,
+    source => "puppet:///modules/${module_name}${logo_file}"
   }
   selinux::boolean { 'httpd_can_connect_ldap': }
 }
