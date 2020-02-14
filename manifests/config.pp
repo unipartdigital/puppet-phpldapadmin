@@ -57,8 +57,9 @@ class phpldapadmin::config(
   }
   # Drop a cheeky logo in place :)
   file { $logo_file:
-    ensure => file,
-    source => "puppet:///modules/${module_name}${logo_file}"
+    ensure  => file,
+    source  => "puppet:///modules/${module_name}${logo_file}",
+    replace => true,
   }
   selinux::boolean { 'httpd_can_connect_ldap': }
 }
